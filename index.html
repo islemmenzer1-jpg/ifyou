@@ -8,7 +8,7 @@
 <meta property="og:title" content="IF You... — One impossible scenario. Every day.">
 <meta property="og:image" content="https://islemmenzer1-jpg.github.io/ifyou/img/banner.jpg">
 <meta name="theme-color" content="#0A0A0C">
-<link rel="stylesheet" href="style.css?v=4">
+<link rel="stylesheet" href="style.css?v=5">
 <link rel="icon" href="logo.png">
 </head>
 <body>
@@ -60,7 +60,7 @@ fetch("episodes.json?t=" + Date.now(), {cache: "no-store"}).then(r => r.json()).
   list.slice(0, 6).forEach(e => {
     const soon = e.publish_at && Date.parse(e.publish_at) > now;
     const a = document.createElement("a");
-    a.className = "ep" + (soon ? " soon" : "");
+    a.className = "ep" + (soon ? " soon" : "") + (String(e.num).startsWith("L") ? " wide" : "");
     a.href = soon ? CHANNEL : (e.url || CHANNEL);
     a.target = "_blank"; a.rel = "noopener";
     a.innerHTML = `<span class="pic"><img src="${e.thumb}" alt="" loading="lazy"></span><span class="num">${e.num}</span><span class="title"></span>`;
@@ -78,6 +78,6 @@ fetch("episodes.json?t=" + Date.now(), {cache: "no-store"}).then(r => r.json()).
   });
 }).catch(() => {});
 </script>
-<script src="bg.js?v=4" defer></script>
+<script src="bg.js?v=5" defer></script>
 </body>
 </html>

@@ -61,3 +61,4 @@ footer .brand{justify-content:center;margin-bottom:12px}
 
 @media (max-width:720px){.eps{grid-template-columns:repeat(2,1fr);gap:12px}nav.top .links a:not(.btn){display:none}}
 @media (prefers-reduced-motion:reduce){.dot{animation:none}.btn,.ep{transition:none}}
+.ep.wide{grid-column:span 2}.ep.wide img{aspect-ratio:16/9}
