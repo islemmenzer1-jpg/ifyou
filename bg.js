@@ -15,8 +15,8 @@
   const circle = (r) => { ctx.beginPath(); ctx.arc(0, 0, r, 0, TAU); ctx.stroke(); };
   const S = {
     atom(s, t) { for (let i = 0; i < 3; i++) { ctx.save(); ctx.rotate(i * Math.PI / 3); ctx.beginPath(); ctx.ellipse(0, 0, s, s * 0.32, 0, 0, TAU); ctx.stroke(); const a = t * (0.9 + i * 0.2); ctx.fillStyle = ctx.strokeStyle; ctx.beginPath(); ctx.arc(Math.cos(a) * s, Math.sin(a) * s * 0.32, s * 0.05, 0, TAU); ctx.fill(); ctx.restore(); } circle(s * 0.1); },
-    planet(s) { circle(s * 0.55); ctx.beginPath(); ctx.ellipse(0, 0, s, s * 0.22, -0.35, 0, TAU); ctx.stroke(); },
-    orbits(s, t) { [0.35, 0.65, 1].forEach((k, i) => { circle(s * k); const a = t * (1.2 - i * 0.3) + i * 2; ctx.beginPath(); ctx.arc(Math.cos(a) * s * k, Math.sin(a) * s * k, s * 0.05, 0, TAU); ctx.fill(); }); },
+    planet(s, t) { circle(s * 0.55); for (let i = 1; i < 4; i++) { ctx.beginPath(); ctx.ellipse(0, 0, s * 0.55, s * 0.55 * Math.abs(Math.cos(t * 0.3 + i)), 0, 0, TAU); ctx.globalAlpha *= 0.4; ctx.stroke(); ctx.globalAlpha /= 0.4; } ctx.beginPath(); ctx.ellipse(0, 0, s, s * 0.22, -0.35, 0, TAU); ctx.stroke(); const a = t * 0.9; ctx.beginPath(); ctx.arc(Math.cos(a) * s * 1.15, Math.sin(a) * s * 0.3, s * 0.07, 0, TAU); ctx.fill(); },
+    orbits(s, t) { const pr = (t * 0.5) % 1; ctx.globalAlpha *= (1 - pr); circle(s * (0.2 + pr)); ctx.globalAlpha /= Math.max(0.001, 1 - pr); [0.35, 0.65, 1].forEach((k, i) => { circle(s * k); const a = t * (1.2 - i * 0.3) + i * 2; ctx.beginPath(); ctx.arc(Math.cos(a) * s * k, Math.sin(a) * s * k, s * 0.05, 0, TAU); ctx.fill(); }); },
     cube(s, t) { const p = []; for (let i = 0; i < 8; i++) { let x = i & 1 ? 1 : -1, y = i & 2 ? 1 : -1, z = i & 4 ? 1 : -1; const a = t * 0.6, b = t * 0.4; [x, z] = [x * Math.cos(a) - z * Math.sin(a), x * Math.sin(a) + z * Math.cos(a)]; [y, z] = [y * Math.cos(b) - z * Math.sin(b), y * Math.sin(b) + z * Math.cos(b)]; const k = 2.6 / (3.2 + z); p.push([x * s * 0.5 * k, y * s * 0.5 * k]); } for (let i = 0; i < 8; i++) for (const j of [1, 2, 4]) if (!(i & j)) { ctx.beginPath(); ctx.moveTo(...p[i]); ctx.lineTo(...p[i | j]); ctx.stroke(); } },
     pyramid(s, t) { const a = t * 0.5; const b = [0, 1, 2, 3].map((i) => [Math.cos(a + i * Math.PI / 2) * s * 0.8, s * 0.45 + Math.sin(a + i * Math.PI / 2) * s * 0.22]); const top = [0, -s * 0.8]; ctx.beginPath(); b.forEach((q, i) => (i ? ctx.lineTo(...q) : ctx.moveTo(...q))); ctx.closePath(); ctx.stroke(); b.forEach((q) => { ctx.beginPath(); ctx.moveTo(...q); ctx.lineTo(...top); ctx.stroke(); }); },
     dna(s, t) { for (let i = 0; i < 14; i++) { const y = -s + (i / 13) * s * 2, a = i * 0.55 + t; const x1 = Math.sin(a) * s * 0.35, x2 = -x1; ctx.beginPath(); ctx.moveTo(x1, y); ctx.lineTo(x2, y); ctx.globalAlpha *= 0.6; ctx.stroke(); ctx.globalAlpha /= 0.6; ctx.beginPath(); ctx.arc(x1, y, s * 0.035, 0, TAU); ctx.arc(x2, y, s * 0.035, 0, TAU); ctx.fill(); } },
@@ -28,7 +28,7 @@
     compass(s, t) { circle(s); ctx.save(); ctx.rotate(Math.sin(t * 0.6) * 0.5); ctx.beginPath(); ctx.moveTo(0, -s * 0.8); ctx.lineTo(s * 0.12, 0); ctx.lineTo(0, s * 0.8); ctx.lineTo(-s * 0.12, 0); ctx.closePath(); ctx.stroke(); ctx.restore(); },
     wave(s, t) { ctx.beginPath(); for (let i = 0; i <= 60; i++) { const x = -s + i / 60 * s * 2; const y = Math.sin(i / 5 + t * 1.5) * s * 0.25 * Math.sin(i / 60 * Math.PI); i ? ctx.lineTo(x, y) : ctx.moveTo(x, y); } ctx.stroke(); },
     triangle(s, t) { ctx.save(); ctx.rotate(t * 0.2); ctx.beginPath(); for (let i = 0; i < 3; i++) { const a = -Math.PI / 2 + i * TAU / 3; ctx.lineTo(Math.cos(a) * s, Math.sin(a) * s); } ctx.closePath(); ctx.stroke(); ctx.restore(); },
-    blackhole(s, t) { for (let i = 0; i < 5; i++) { ctx.beginPath(); ctx.ellipse(0, 0, s * (0.4 + i * 0.15), s * (0.12 + i * 0.045), Math.sin(t * 0.2) * 0.1, 0, TAU); ctx.stroke(); } ctx.beginPath(); ctx.arc(0, 0, s * 0.28, 0, TAU); ctx.fillStyle = "#0A0A0C"; ctx.fill(); ctx.stroke(); },
+    blackhole(s, t) { for (let i = 0; i < 5; i++) { ctx.beginPath(); ctx.ellipse(0, 0, s * (0.4 + i * 0.15), s * (0.12 + i * 0.045), Math.sin(t * 0.2) * 0.1, 0, TAU); ctx.stroke(); } for (let k = 0; k < 18; k++) { const a = t * (1.6 - k * 0.04) + k * 2.1, r = s * (0.45 + (k % 6) * 0.1); ctx.beginPath(); ctx.arc(Math.cos(a) * r, Math.sin(a) * r * 0.3, s * 0.018, 0, TAU); ctx.fill(); } ctx.beginPath(); ctx.arc(0, 0, s * 0.28, 0, TAU); const f = ctx.fillStyle; ctx.fillStyle = "#0A0A0C"; ctx.fill(); ctx.fillStyle = f; ctx.stroke(); },
     neural(s, t) { const L = [[-1, [-0.6, 0, 0.6]], [0, [-0.9, -0.3, 0.3, 0.9]], [1, [-0.45, 0.45]]].map(([x, ys]) => ys.map((y) => [x * s * 0.85, y * s * 0.8]));
       for (let l = 0; l < 2; l++) for (const a of L[l]) for (const b of L[l + 1]) { ctx.beginPath(); ctx.moveTo(...a); ctx.lineTo(...b); ctx.globalAlpha *= 0.5; ctx.stroke(); ctx.globalAlpha /= 0.5; }
       L.flat().forEach((p, i) => { ctx.beginPath(); ctx.arc(p[0], p[1], s * (0.07 + 0.03 * Math.max(0, Math.sin(t * 2 + i))), 0, TAU); ctx.fill(); }); },
@@ -44,11 +44,11 @@
     return {
       kind: (() => { const g = PILLARS[i % PILLARS.length]; return g[Math.floor(Math.random() * g.length)]; })(),
       x: Math.random() * W, y: Math.random() * H,
-      s: (big ? 52 + Math.random() * 30 : 22 + Math.random() * 26) * (W < 600 ? 0.75 : 1),
+      s: (big ? 110 + Math.random() * 60 : 60 + Math.random() * 40) * (W < 600 ? 0.6 : 1),
       vx: (Math.random() - 0.5) * 0.12, vy: (Math.random() - 0.5) * 0.12 - 0.04,
       rot: Math.random() * TAU, vr: (Math.random() - 0.5) * 0.0015,
       t0: Math.random() * 100, speed: 0.25 + Math.random() * 0.35,
-      red: Math.random() < 0.18,
+      red: Math.random() < 0.35,
       depth: 0.3 + Math.random() * 0.7,
       life: 0, max: 1400 + Math.random() * 1600, fade: fresh ? 0 : 1,
     };
@@ -60,7 +60,7 @@
     cv.width = W * DPR; cv.height = H * DPR;
     cv.style.width = W + "px"; cv.style.height = H + "px";
     ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
-    const n = Math.round(Math.min(12, Math.max(8, (W * H) / 110000)));
+    const n = Math.round(Math.min(10, Math.max(6, (W * H) / 130000)));
     items = Array.from({ length: n }, (_, i) => Object.assign(spawn(i, false), { life: Math.random() * 1000 }));
   }
 
@@ -73,15 +73,15 @@
       if (!reduce) { p.x += p.vx * dt; p.y += p.vy * dt; p.rot += p.vr * dt; p.life += dt; }
       const edge = Math.min(1, p.life / 120, (p.max - p.life) / 120);
       if (p.life > p.max || p.x < -200 || p.x > W + 200 || p.y < -200 || p.y > H + 200) { items[i] = spawn(i, true); continue; }
-      const a = Math.max(0, edge) * (p.red ? 0.42 : 0.12) * (0.6 + p.depth * 0.4);
+      const a = Math.max(0, edge) * (p.red ? 0.75 : 0.32) * (0.65 + p.depth * 0.35);
       const col = p.red ? RED : WHITE;
       ctx.save();
       ctx.translate(p.x, p.y - scrollY * 0.08 * p.depth);
       ctx.rotate(p.rot);
       ctx.globalAlpha = a;
       ctx.strokeStyle = `rgb(${col})`; ctx.fillStyle = `rgb(${col})`;
-      ctx.lineWidth = p.red ? 1.6 : 1.2;
-      if (p.red) { ctx.shadowColor = `rgba(${RED},0.8)`; ctx.shadowBlur = 10; }
+      ctx.lineWidth = p.red ? 2.2 : 1.8;
+      ctx.shadowColor = p.red ? `rgba(${RED},0.9)` : `rgba(${WHITE},0.35)`; ctx.shadowBlur = p.red ? 14 : 6;
       S[p.kind](p.s * (0.8 + p.depth * 0.3), (now / 1000) * p.speed + p.t0);
       ctx.restore();
     }

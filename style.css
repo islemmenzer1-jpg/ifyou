@@ -33,7 +33,13 @@ h2{font-size:14px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted
 .eps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
 .ep{position:relative;display:block;background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden;transition:border-color .15s ease,transform .15s ease}
 .ep:hover{border-color:var(--red);transform:translateY(-2px)}
+.ep .pic{position:relative;display:block}
 .ep img{width:100%;aspect-ratio:9/16;object-fit:cover;display:block}
+.ep.soon img{filter:blur(6px) brightness(.45);transform:scale(1.06)}
+.ep .pic{overflow:hidden}
+.band{position:absolute;left:0;right:0;top:50%;transform:translateY(-50%) rotate(-6deg) scale(1.15);background:var(--red);color:#fff;text-align:center;padding:12px 0 10px;box-shadow:0 0 30px rgba(193,18,31,.6)}
+.band b{display:block;font-size:20px;letter-spacing:.22em;font-weight:900}
+.band small{display:block;font-size:12px;letter-spacing:.15em;opacity:.85;text-transform:uppercase}
 .ep .num{position:absolute;top:10px;left:10px;font:12px/1 ui-monospace,Consolas,monospace;background:rgba(0,0,0,.7);padding:5px 8px;border-radius:6px;letter-spacing:.1em}
 .ep .title{display:block;padding:12px 14px 14px;font-weight:600;font-size:15px;line-height:1.35}
 

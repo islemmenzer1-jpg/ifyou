@@ -8,7 +8,7 @@
 <meta property="og:title" content="IF You... — One impossible scenario. Every day.">
 <meta property="og:image" content="https://islemmenzer1-jpg.github.io/ifyou/img/banner.jpg">
 <meta name="theme-color" content="#0A0A0C">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css?v=4">
 <link rel="icon" href="logo.png">
 </head>
 <body>
@@ -53,17 +53,31 @@
 </footer>
 
 <script>
-fetch("episodes.json", {cache: "no-store"}).then(r => r.json()).then(list => {
+const CHANNEL = "https://www.youtube.com/@IFYouNoir/shorts";
+fetch("episodes.json?t=" + Date.now(), {cache: "no-store"}).then(r => r.json()).then(list => {
   const box = document.getElementById("eps");
+  const now = Date.now();
   list.slice(0, 6).forEach(e => {
+    const soon = e.publish_at && Date.parse(e.publish_at) > now;
     const a = document.createElement("a");
-    a.className = "ep"; a.href = e.url;
-    a.innerHTML = `<img src="${e.thumb}" alt="" loading="lazy"><span class="num">${e.num}</span><span class="title"></span>`;
+    a.className = "ep" + (soon ? " soon" : "");
+    a.href = soon ? CHANNEL : (e.url || CHANNEL);
+    a.target = "_blank"; a.rel = "noopener";
+    a.innerHTML = `<span class="pic"><img src="${e.thumb}" alt="" loading="lazy"></span><span class="num">${e.num}</span><span class="title"></span>`;
     a.querySelector(".title").textContent = e.title;
+    if (soon) {
+      const d = new Date(e.publish_at);
+      const when = d.toLocaleString([], {weekday: "short", hour: "numeric", minute: "2-digit"});
+      const band = document.createElement("span");
+      band.className = "band";
+      band.innerHTML = `<b>COMING SOON</b><small>${when}</small>`;
+      a.querySelector(".pic").appendChild(band);
+      setTimeout(() => location.reload(), Math.min(Date.parse(e.publish_at) - now + 2000, 2147000000));
+    }
     box.appendChild(a);
   });
 }).catch(() => {});
 </script>
-<script src="bg.js" defer></script>
+<script src="bg.js?v=4" defer></script>
 </body>
 </html>
