@@ -1,13 +1,69 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>IF You... — One impossible scenario. Every day.</title><link rel="stylesheet" href="style.css"><link rel="icon" href="logo.png"></head>
-<body><main>
-<header><img src="logo.png" alt="IF You... logo"><div><h1>IF YOU<span>...</span></h1><div class="muted">YouTube channel · @IFYouNoir</div></div></header>
-<p class="tag">One impossible scenario. Every day.</p>
-<p><strong>IF You...</strong> drops you inside one mind-bending scenario every day: black holes, time paradoxes, the limits of your mind, the end of the universe, and everything strange about being human. Real science. Real thought experiments. 30 seconds. You are the main character.</p>
-<p>A new Short is published every day at 12 PM ET / 6 PM GMT+1.</p>
-<p><a href="https://www.youtube.com/@IFYouNoir">Watch on YouTube → @IFYouNoir</a></p>
-<h2>IF You Uploader</h2>
-<p>IF You Uploader is a private tool used only by the owner of the IF You... channel to upload and schedule the channel's own videos through the YouTube API Services. It is not offered to the public and does not access anyone else's account.</p>
-<nav><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Service</a><a href="https://www.youtube.com/@IFYouNoir">YouTube</a></nav>
-</main></body></html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>IF You... — One impossible scenario. Every day.</title>
+<meta name="description" content="Daily 30-second science thought experiments where you are the main character.">
+<meta property="og:title" content="IF You... — One impossible scenario. Every day.">
+<meta property="og:image" content="https://islemmenzer1-jpg.github.io/ifyou/img/banner.jpg">
+<meta name="theme-color" content="#0A0A0C">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="logo.png">
+</head>
+<body>
+
+<nav class="top">
+  <a class="brand" href="index.html"><img src="logo.png" alt=""><b>IF YOU<span>...</span></b></a>
+  <a class="btn small" href="https://www.youtube.com/@IFYouNoir?sub_confirmation=1">Subscribe</a>
+</nav>
+
+<header class="hero">
+  <h1>IF YOU<span>...</span></h1>
+  <p class="lead">One impossible scenario. Every day.</p>
+  <div class="cta">
+    <a class="btn" href="https://www.youtube.com/@IFYouNoir/shorts">Watch on YouTube</a>
+  </div>
+  <p class="schedule"><span class="dot"></span>New Short daily · 6 PM GMT+1</p>
+</header>
+
+<main>
+  <section>
+    <h2>Latest</h2>
+    <div class="eps" id="eps"></div>
+  </section>
+
+  <section>
+    <ul class="chips">
+      <li>Space</li><li>AI</li><li>Mind</li><li>Time</li><li>Nature</li>
+      <li>Physics</li><li>History</li><li>Philosophy</li>
+    </ul>
+  </section>
+</main>
+
+<footer>
+  <p class="muted small">Real science · Original animation and sound · AI narration</p>
+  <div class="links">
+    <a href="privacy.html">Privacy</a>
+    <a href="terms.html">Terms</a>
+    <a href="https://www.youtube.com/@IFYouNoir">YouTube</a>
+    <a href="mailto:islemmenzer1@gmail.com">Contact</a>
+  </div>
+  <p class="muted tiny">IF You Uploader is a private tool used only by the channel owner to schedule this channel's own videos through the YouTube API Services. © 2026 IF You...</p>
+</footer>
+
+<script>
+fetch("episodes.json", {cache: "no-store"}).then(r => r.json()).then(list => {
+  const box = document.getElementById("eps");
+  list.slice(0, 6).forEach(e => {
+    const a = document.createElement("a");
+    a.className = "ep"; a.href = e.url;
+    a.innerHTML = `<img src="${e.thumb}" alt="" loading="lazy"><span class="num">${e.num}</span><span class="title"></span>`;
+    a.querySelector(".title").textContent = e.title;
+    box.appendChild(a);
+  });
+}).catch(() => {});
+</script>
+<script src="bg.js" defer></script>
+</body>
+</html>
