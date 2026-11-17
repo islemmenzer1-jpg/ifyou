@@ -62,3 +62,11 @@ footer .brand{justify-content:center;margin-bottom:12px}
 @media (max-width:720px){.eps{grid-template-columns:repeat(2,1fr);gap:12px}nav.top .links a:not(.btn){display:none}}
 @media (prefers-reduced-motion:reduce){.dot{animation:none}.btn,.ep{transition:none}}
 .ep.wide{grid-column:span 2}.ep.wide img{aspect-ratio:16/9}
+
+/* Y, the mascot, drifting in space (2026-11-16) */
+.hero{position:relative;overflow:hidden}
+.yfloat{position:absolute;right:9%;top:16%;width:clamp(110px,16vw,220px);pointer-events:none;filter:drop-shadow(0 0 24px rgba(255,255,255,.12));animation:ydrift 14s ease-in-out infinite;z-index:0}
+.hero h1,.hero p,.hero .cta{position:relative;z-index:1}
+@keyframes ydrift{0%{transform:translate(0,0) rotate(-10deg)}25%{transform:translate(-26px,18px) rotate(4deg)}50%{transform:translate(-8px,42px) rotate(12deg)}75%{transform:translate(18px,14px) rotate(-2deg)}100%{transform:translate(0,0) rotate(-10deg)}}
+@media (max-width:640px){.yfloat{right:4%;top:6%;width:96px;opacity:.9}}
+@media (prefers-reduced-motion:reduce){.yfloat{animation:none}}
