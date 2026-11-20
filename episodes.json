@@ -1,5 +1,12 @@
 [
  {
+  "num": "014",
+  "title": "If You Built the Great Pyramid in 20 Years",
+  "thumb": "img/ep014.jpg",
+  "url": "https://youtube.com/shorts/u3ZNMX2_5KQ?feature=share",
+  "publish_at": "2026-11-20T12:00:00-05:00"
+ },
+ {
   "num": "013",
   "title": "If You Remembered a Day That Never Happened",
   "thumb": "img/ep013.jpg",
@@ -33,12 +40,5 @@
   "thumb": "img/ep009.jpg",
   "url": "https://youtube.com/shorts/czFu_uKGU-0?feature=share",
   "publish_at": "2026-11-15T12:00:00-05:00"
- },
- {
-  "num": "008",
-  "title": "If You Watched a Mountain Being Born",
-  "thumb": "img/ep008.jpg",
-  "url": "https://youtube.com/shorts/jD4R032CMDw?feature=share",
-  "publish_at": "2026-11-14T12:00:00-05:00"
  }
 ]
