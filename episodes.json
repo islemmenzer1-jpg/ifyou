@@ -1,5 +1,12 @@
 [
  {
+  "num": "015",
+  "title": "If You Watched a Friend Fall Into a Black Hole",
+  "thumb": "img/ep015.jpg",
+  "url": "https://youtube.com/shorts/_7Y4S6rmwP8?feature=share",
+  "publish_at": "2026-11-21T12:00:00-05:00"
+ },
+ {
   "num": "014",
   "title": "If You Built the Great Pyramid in 20 Years",
   "thumb": "img/ep014.jpg",
@@ -33,12 +40,5 @@
   "thumb": "img/ep010.jpg",
   "url": "https://youtube.com/shorts/I9IEvywh_zw?feature=share",
   "publish_at": "2026-11-16T12:00:00-05:00"
- },
- {
-  "num": "009",
-  "title": "If You Met an Exact Copy of Yourself",
-  "thumb": "img/ep009.jpg",
-  "url": "https://youtube.com/shorts/czFu_uKGU-0?feature=share",
-  "publish_at": "2026-11-15T12:00:00-05:00"
  }
 ]
