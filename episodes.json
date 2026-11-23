@@ -1,5 +1,12 @@
 [
  {
+  "num": "016",
+  "title": "If You Touched Something Colder Than Space",
+  "thumb": "img/ep016.jpg",
+  "url": "https://youtube.com/shorts/nSULouNVwZA?feature=share",
+  "publish_at": "2026-11-22T12:00:00-05:00"
+ },
+ {
   "num": "015",
   "title": "If You Watched a Friend Fall Into a Black Hole",
   "thumb": "img/ep015.jpg",
@@ -33,12 +40,5 @@
   "thumb": "img/ep011.jpg",
   "url": "https://youtube.com/shorts/3gm8je0NEtc?feature=share",
   "publish_at": "2026-11-17T12:00:00-05:00"
- },
- {
-  "num": "010",
-  "title": "If You Taught an AI to Write a Story",
-  "thumb": "img/ep010.jpg",
-  "url": "https://youtube.com/shorts/I9IEvywh_zw?feature=share",
-  "publish_at": "2026-11-16T12:00:00-05:00"
  }
 ]
