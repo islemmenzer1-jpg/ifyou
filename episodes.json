@@ -1,5 +1,12 @@
 [
  {
+  "num": "018",
+  "title": "If You Dropped a Hammer and a Feather on the Moon",
+  "thumb": "img/ep018.jpg",
+  "url": "https://youtube.com/shorts/vnXK57I0VWE?feature=share",
+  "publish_at": "2026-11-24T12:00:00-05:00"
+ },
+ {
   "num": "017",
   "title": "If You Could Live Every Life at Once",
   "thumb": "img/ep017.jpg",
@@ -33,12 +40,5 @@
   "thumb": "img/ep013.jpg",
   "url": "https://youtube.com/shorts/1XJBDn89PfM?feature=share",
   "publish_at": "2026-11-19T12:00:00-05:00"
- },
- {
-  "num": "012",
-  "title": "If You Swapped Eyes With a Bee",
-  "thumb": "img/ep012.jpg",
-  "url": "https://youtube.com/shorts/73EWmDiU0lE?feature=share",
-  "publish_at": "2026-11-18T12:00:00-05:00"
  }
 ]
