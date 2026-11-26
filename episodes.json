@@ -1,5 +1,12 @@
 [
  {
+  "num": "020",
+  "title": "If You Picked the Oldest Part of You",
+  "thumb": "img/ep020.jpg",
+  "url": "https://youtube.com/shorts/cIw8galbYQk?feature=share",
+  "publish_at": "2026-11-26T12:00:00-05:00"
+ },
+ {
   "num": "019",
   "title": "If You Found a Snowflake Exactly Like Another",
   "thumb": "img/ep019.jpg",
@@ -33,12 +40,5 @@
   "thumb": "img/ep015.jpg",
   "url": "https://youtube.com/shorts/_7Y4S6rmwP8?feature=share",
   "publish_at": "2026-11-21T12:00:00-05:00"
- },
- {
-  "num": "014",
-  "title": "If You Built the Great Pyramid in 20 Years",
-  "thumb": "img/ep014.jpg",
-  "url": "https://youtube.com/shorts/u3ZNMX2_5KQ?feature=share",
-  "publish_at": "2026-11-20T12:00:00-05:00"
  }
 ]
